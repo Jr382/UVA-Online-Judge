@@ -6,16 +6,19 @@ def main():
     ugly.sort()
     print("The 1500'th ugly number is {}.".format(ugly[1499]))
 
+
 def cross(a, b):
-    cross = []
+    cross_list = []
     for i in a:
         for j in b:
-            cross.append(i*j)
-    return cross
+            cross_list.append(i*j)
+    return cross_list
+
 
 def extend(to_extend, to_add):
     for i in to_add:
         to_extend.extend(i)
     return to_extend
+
 
 main()

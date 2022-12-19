@@ -1,4 +1,6 @@
 from sys import stdin as s
+ladies = []
+
 
 def main():
     global ladies
@@ -14,7 +16,8 @@ def main():
                 ladies[i] if i >= 0 else "X",
                 ladies[j] if j < len(ladies) else "X")
     print(response.strip())
-            
+
+
 def bin_search(n):
     global ladies
     l, r, i, aux = 0, len(ladies), -1, -1
@@ -33,5 +36,6 @@ def bin_search(n):
     if ladies[i] < n: chosen_ladies = (i, i+1)
     elif ladies[i] > n: chosen_ladies = (i-1, i)
     return chosen_ladies
+
 
 main()

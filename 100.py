@@ -1,8 +1,8 @@
 from sys import stdin as s
+memory = {1: 1}
+
 
 def main():
-    global memory
-    memory = {1:1}
     line = s.readline().strip()
     response = ""
     while line:
@@ -12,11 +12,13 @@ def main():
         line = s.readline().strip()
     print(response.strip())
 
+
 def function(n):
     global memory
     if n not in memory:
         memory[n] = 1 + function(3*n+1 if n%2 != 0 else n//2)
     return memory[n]
+
 
 main()
 
