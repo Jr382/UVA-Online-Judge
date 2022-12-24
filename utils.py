@@ -17,7 +17,7 @@ class Timer:
         def wrapper(*args):
             start = time()
             result = function(*args)
-            cls.cases.append([len(cls.cases)] + list(args) + [time() - start])
+            cls.cases.append([len(cls.cases)] + list(args) + [result] + [time() - start])
             return result
 
         return wrapper
