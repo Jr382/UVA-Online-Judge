@@ -3,36 +3,39 @@ from time import time
 
 class Timer:
 
-    times = []
-    item_length = 1
+    cases = []
 
     def __init__(self):
         pass
+
+    def __iter__(self):
+        for case in self.cases:
+            yield case
 
     @classmethod
     def measure(cls, function):
         def wrapper(*args):
             start = time()
             result = function(*args)
-            cls.times.append([len(cls.times)] + list(args) + [time() - start])
+            cls.cases.append([len(cls.cases)] + list(args) + [time() - start])
             return result
 
         return wrapper
 
     def get_max_duration(self):
-        return max(self.times, key=lambda x: x[-1])[-1] if len(self.times) > 0 else 0
+        return self.get_max_duration_case()[-1]
 
     def get_min_duration(self):
-        return min(self.times, key=lambda x: x[-1])[-1] if len(self.times) > 0 else 0
+        return self.get_min_duration_case()[-1]
 
     def get_max_duration_case(self):
-        return max(self.times, key=lambda x: x[-1]) if len(self.times) > 0 else 0
+        return max(self.cases, key=lambda x: x[-1]) if len(self.cases) > 0 else [None]
 
     def get_min_duration_case(self):
-        return min(self.times, key=lambda x: x[-1]) if len(self.times) > 0 else 0
+        return min(self.cases, key=lambda x: x[-1]) if len(self.cases) > 0 else [None]
 
     def clear_times(self):
-        self.times = []
+        self.cases = []
 
 
 timer = Timer()
