@@ -4,12 +4,21 @@ swaps = 0
 
 def main():
     global swaps
-    line = s.readline().strip()
-    while line:
-        lis, swaps = [int(i) for i in s.readline().split()], 0  # You have to simulate C++ input
+    # Simulating C++ input
+    lines = s.readlines()
+    raw_input = ""
+    for line in lines:
+        raw_input += line.replace("\n", " ")
+    raw_input = raw_input.split()
+    i = 0
+    while i < len(raw_input):
+        size, swaps, lis = int(raw_input[i]), 0, []
+        i += 1
+        for j in range(size):
+            lis.append(int(raw_input[i]))
+            i += 1
         merge_sort(lis)
         print(f'Minimum exchange operations : {swaps}')
-        line = s.readline().strip()
 
 
 def merge_sort(lis):
