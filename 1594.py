@@ -10,7 +10,6 @@ def main():
 
 
 def solve(step):
-    # No fucking idea
     size, visited = len(step), set()
     while any(step) and step not in visited:
         visited.add(step)
